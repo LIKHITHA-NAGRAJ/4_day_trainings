@@ -1,0 +1,298 @@
+1
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target;
+    cin >> n >> target;
+    vector<int> inv(n);
+    for(int i = 0; i < n; i++) cin >> inv[i];
+
+    int index = -1;
+    for(int i = 0; i < n; i++) {
+        if(inv[i] == target) {
+            index = i;
+            break;
+        }
+    }
+    cout << index;
+    return 0;
+}
+
+2
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target;
+    cin >> n >> target;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int left = 0, right = n - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if(nums[mid] == target) {
+            cout << mid;
+            return 0;
+        }
+        if(nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    cout << -1;
+    return 0;
+}
+
+
+
+
+3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x;
+    cin >> x;
+    if (x < 2) { cout << x; return 0; }
+    
+    long left = 2, right = x / 2, ans;
+    while (left <= right) {
+        long mid = left + (right - left) / 2;
+        long num = mid * mid;
+        if (num == x) { cout << mid; return 0; }
+        if (num < x) {
+            ans = mid;
+            left = mid + 1;
+        } else right = mid - 1;
+    }
+    cout << ans;
+    return 0;
+}
+
+
+
+4
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> ranks(n);
+    for(int i = 0; i < n; i++) cin >> ranks[i];
+
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(ranks[j] > ranks[j+1]) swap(ranks[j], ranks[j+1]);
+        }
+    }
+
+    for(int x : ranks) cout << x << " ";
+    return 0;
+}
+
+
+5
+#include <iostream>
+#include <vector>
+#include <set>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    set<int> top3;
+    for(int i = 0; i < n; i++) {
+        int val; cin >> val;
+        top3.insert(val);
+        if(top3.size() > 3) top3.erase(top3.begin());
+    }
+    if(top3.size() < 3) {
+        auto it = top3.end(); --it;
+        cout << *it;
+    } else {
+        cout << *top3.begin();
+    }
+    return 0;
+}
+
+
+
+
+ch 1
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target; cin >> n >> target;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int left = 0, right = n - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if(nums[mid] == target) { cout << mid; return 0; }
+        else if(nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    cout << left;
+    return 0;
+}
+
+
+ch 2
+#include <iostream>
+using namespace std;
+
+// Mock API
+bool isBadVersion(int version, int firstBad) {
+    return version >= firstBad;
+}
+
+int main() {
+    int n, firstBad;
+    cin >> n >> firstBad;
+    int left = 1, right = n, ans = n;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if(isBadVersion(mid, firstBad)) {
+            ans = mid;
+            right = mid - 1;
+        } else left = mid + 1;
+    }
+    cout << ans;
+    return 0;
+}
+
+
+ch 3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> arr(n);
+    for(int i = 0; i < n; i++) cin >> arr[i];
+
+    int left = 0, right = n - 1;
+    while(left < right) {
+        int mid = left + (right - left) / 2;
+        if(arr[mid] < arr[mid + 1]) left = mid + 1;
+        else right = mid;
+    }
+    cout << left;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
