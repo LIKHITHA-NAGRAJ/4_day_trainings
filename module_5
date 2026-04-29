@@ -1,0 +1,240 @@
+1
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+    int freq[256] = {0}; // Frequency array for ASCII
+
+    for (char c : s) {
+        freq[(int)c]++;
+    }
+
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] > 0) {
+            cout << (char)i << " " << freq[i] << endl;
+        }
+    }
+    return 0;
+}
+
+
+2
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int singleNum = 0;
+    for (int i = 0; i < n; i++) {
+        int val; cin >> val;
+        singleNum ^= val; // XOR cancels out pairs: x ^ x = 0
+    }
+    cout << singleNum;
+    return 0;
+}
+
+
+
+3
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    map<int, int> idCounts;
+    for (int i = 0; i < n; i++) {
+        int id; cin >> id;
+        idCounts[id]++;
+    }
+    
+    cout << "Duplicates: ";
+    for (auto const& [id, count] : idCounts) {
+        if (count > 1) cout << id << " ";
+    }
+    return 0;
+}
+
+
+
+
+4
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    unordered_set<int> seen;
+    int totalSum = 0;
+    for (int i = 0; i < n; i++) {
+        int val; cin >> val;
+        if (seen.find(val) == seen.end()) {
+            totalSum += val;
+            seen.insert(val);
+        }
+    }
+    cout << totalSum;
+    return 0;
+}
+
+
+5
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> nums(n);
+    map<int, int> freq;
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+        freq[nums[i]]++;
+    }
+
+    sort(nums.begin(), nums.end(), [&](int a, int b) {
+        if (freq[a] != freq[b]) return freq[a] > freq[b];
+        return a < b; // Sort by value if frequencies match
+    });
+
+    for (int x : nums) cout << x << " ";
+    return 0;
+}
+
+
+
+ch 1
+#include <iostream>
+#include <string>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    string jewels, stones; cin >> jewels >> stones;
+    unordered_set<char> jSet(jewels.begin(), jewels.end());
+    int count = 0;
+    for (char s : stones) {
+        if (jSet.count(s)) count++;
+    }
+    cout << count;
+    return 0;
+}
+
+
+ch 2
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> nums(n);
+    int countMap[101] = {0}; // Constraint: nums[i] <= 100
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+        countMap[nums[i]]++;
+    }
+
+    int smaller[101] = {0};
+    int runningSum = 0;
+    for (int i = 0; i <= 100; i++) {
+        smaller[i] = runningSum;
+        runningSum += countMap[i];
+    }
+
+    for (int x : nums) cout << smaller[x] << " ";
+    return 0;
+}
+
+ch 3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int evenCount = 0;
+    for (int i = 0; i < n; i++) {
+        int num; cin >> num;
+        int digits = 0;
+        while (num > 0) {
+            num /= 10;
+            digits++;
+        }
+        if (digits % 2 == 0) evenCount++;
+    }
+    cout << evenCount;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
