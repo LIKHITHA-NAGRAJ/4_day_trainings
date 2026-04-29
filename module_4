@@ -1,0 +1,220 @@
+1
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    double total = 0, price;
+    for (int i = 0; i < n; i++) {
+        cin >> price;
+        total += price;
+    }
+    cout << "Total: " << total;
+    return 0;
+}
+
+
+2
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int maxOnes = 0, currentOnes = 0;
+    for (int i = 0; i < n; i++) {
+        int val; cin >> val;
+        if (val == 1) {
+            currentOnes++;
+            maxOnes = max(maxOnes, currentOnes);
+        } else {
+            currentOnes = 0;
+        }
+    }
+    cout << maxOnes;
+    return 0;
+}
+
+3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target; cin >> n >> target;
+    int index = -1;
+    for (int i = 0; i < n; i++) {
+        int id; cin >> id;
+        if (id == target && index == -1) index = i;
+    }
+    cout << index;
+    return 0;
+}
+
+
+4
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    if (n < 2) { cout << 0; return 0; }
+    vector<int> temps(n);
+    for (int i = 0; i < n; i++) cin >> temps[i];
+    
+    int increases = 0;
+    for (int i = 1; i < n; i++) {
+        if (temps[i] > temps[i-1]) increases++;
+    }
+    cout << "Days with increase: " << increases;
+    return 0;
+}
+
+
+5
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int currentSum = 0;
+    for (int i = 0; i < n; i++) {
+        int val; cin >> val;
+        currentSum += val;
+        cout << currentSum << " ";
+    }
+    return 0;
+}
+
+
+ch 1
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int currentAlt = 0, maxAlt = 0;
+    for (int i = 0; i < n; i++) {
+        int gain; cin >> gain;
+        currentAlt += gain;
+        maxAlt = max(maxAlt, currentAlt);
+    }
+    cout << maxAlt;
+    return 0;
+}
+
+
+
+ch 2
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        int num; cin >> num;
+        if (to_string(num).length() % 2 == 0) count++;
+    }
+    cout << count;
+    return 0;
+}
+
+
+
+ch 3
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int rows, cols; cin >> rows >> cols;
+    int maxWealth = 0;
+    for (int i = 0; i < rows; i++) {
+        int currentWealth = 0;
+        for (int j = 0; j < cols; j++) {
+            int money; cin >> money;
+            currentWealth += money;
+        }
+        maxWealth = max(maxWealth, currentWealth);
+    }
+    cout << maxWealth;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
