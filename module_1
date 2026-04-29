@@ -1,0 +1,178 @@
+//program 1
+
+#include <iostream>
+using namespace std;
+int main() {
+    int a, b; char op;
+    if (!(cin >> a >> b >> op)) return 0;
+    if (op == '/' && b == 0) cout << "ERROR: DIVIDE BY ZERO";
+    else if (op == '+') cout << a + b;
+    else if (op == '-') cout << a - b;
+    else if (op == '*') cout << a * b;
+    else if (op == '/') cout << a / b;
+    return 0;
+}
+
+//program 2
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        string name;
+        int marks;
+        cin >> name >> marks;
+        string grade;
+
+        if (marks < 0 || marks > 100) grade = "INVALID";
+        else if (marks >= 90) grade = "A+";
+        else if (marks >= 80) grade = "A";
+        else if (marks >= 70) grade = "B";
+        else if (marks >= 60) grade = "C";
+        else if (marks >= 50) grade = "D";
+        else grade = "F";
+
+        cout << name << " " << marks << " " << grade << endl;
+    }
+    return 0;
+}
+
+
+//program 3
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        string name;
+        double total, attended;
+        cin >> name >> total >> attended;
+        double percentage = (attended / total) * 100;
+        
+        cout << name << " ";
+        if (percentage >= 75.0) cout << "ELIGIBLE" << endl;
+        else cout << "NOT-ELIGIBLE" << endl;
+    }
+    return 0;
+}
+
+program 4
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int votes[] = {0, 0, 0, 0, 0, 0}; // Index 1-5 for candidates
+    int totalVotes, v, valid = 0, invalid = 0;
+    cin >> totalVotes;
+
+    for (int i = 0; i < totalVotes; i++) {
+        cin >> v;
+        if (v >= 1 && v <= 5) {
+            votes[v]++;
+            valid++;
+        } else {
+            invalid++;
+        }
+    }
+
+    int winner = 1;
+    for (int i = 2; i <= 5; i++) {
+        if (votes[i] > votes[winner]) winner = i;
+    }
+
+    cout << "Winner: Candidate " << winner << endl;
+    cout << "Valid Votes: " << valid << endl;
+    cout << "Invalid Votes: " << invalid << endl;
+    return 0;
+}
+
+//program 5
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << j << (j == i ? "" : " ");
+        }
+        cout << endl;
+    }
+    return 0;
+}
+// challenge 1
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    long long n;
+    cin >> n;
+    int sum = 0;
+    if (n == 0) sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << sum;
+    return 0;
+}
+
+//challenge 2
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int odd = 0, even = 0;
+    for (int i = 0; i < n; i++) {
+        int val;
+        cin >> val;
+        if (val % 2 == 0) even++;
+        else odd++;
+    }
+    cout << "Even: " << even << endl;
+    cout << "Odd: " << odd << endl;
+    return 0;
+}
+
+challenge 3
+#include <iostream>
+#include <climits>
+using namespace std;
+
+int main() {
+    int n;
+    if (!(cin >> n)) return 0;
+    if (n <= 0) {
+        cout << "EMPTY";
+        return 0;
+    }
+
+    int maxVal = INT_MIN, minVal = INT_MAX;
+    for (int i = 0; i < n; i++) {
+        int val;
+        cin >> val;
+        if (val > maxVal) maxVal = val;
+        if (val < minVal) minVal = val;
+    }
+    cout << "Max: " << maxVal << endl;
+    cout << "Min: " << minVal << endl;
+    return 0;
+}
+
