@@ -1,0 +1,243 @@
+1
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int age;
+    cin >> age;
+    if (age < 0) cout << "INVALID";
+    else if (age <= 12) cout << "Child";
+    else if (age <= 19) cout << "Teen";
+    else if (age <= 59) cout << "Adult";
+    else cout << "Senior";
+    return 0;
+}
+
+2
+#include <iostream>
+using namespace std;
+
+int main() {
+    int units;
+    cin >> units;
+    int bill = 0;
+    if (units > 500) { bill += (units - 500) * 10; units = 500; }
+    if (units > 300) { bill += (units - 300) * 6; units = 300; }
+    if (units > 100) { bill += (units - 100) * 4; units = 100; }
+    bill += units * 2;
+    cout << "Total Bill: Rs " << bill;
+    return 0;
+}
+
+
+3
+#include <iostream>
+using namespace std;
+
+int main() {
+    double income;
+    cin >> income;
+    double tax = 0;
+    if (income > 1000000) { tax += (income - 1000000) * 0.3; income = 1000000; }
+    if (income > 500000) { tax += (income - 500000) * 0.2; income = 500000; }
+    if (income > 250000) { tax += (income - 250000) * 0.05; }
+    cout << "Annual Tax: Rs " << tax;
+    return 0;
+}
+
+
+4
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int age;
+    char gender, health; // M/F, G(ood)/P(oor)
+    cin >> age >> gender >> health;
+    int premium = 0;
+    if (age >= 18 && age <= 35 && health == 'G') {
+        premium = (gender == 'M') ? 5000 : 4000;
+    } else if (age > 35 && age <= 50 && health == 'G') {
+        premium = (gender == 'M') ? 8000 : 7000;
+    } else {
+        premium = 12000; // Default high risk
+    }
+    cout << "Premium: Rs " << premium;
+    return 0;
+}
+
+
+5
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int age;
+    string time; // Matinee or Evening
+    cin >> age >> time;
+    int price = (time == "Matinee") ? 150 : 250;
+    if (age <= 12 || age >= 60) price -= 50; // Discount
+    cout << "Ticket Price: Rs " << price;
+    return 0;
+}
+
+
+
+ch 1
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int y;
+    cin >> y;
+    if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) cout << "YES";
+    else cout << "NO";
+    return 0;
+}
+
+
+
+ch 2
+#include <iostream>
+using namespace std;
+
+int main() {
+    int weight, dist;
+    cin >> weight >> dist;
+    if (weight > 20 || dist > 500) cout << "Overnight";
+    else if (weight > 5 || dist > 100) cout << "Express";
+    else cout << "Standard";
+    return 0;
+}
+
+
+
+
+ch 3
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    double w, h;
+    cin >> w >> h;
+    double bmi = w / (h * h);
+    cout << "BMI: " << bmi << " - ";
+    if (bmi < 18.5) cout << "Underweight";
+    else if (bmi < 25) cout << "Normal";
+    else if (bmi < 30) cout << "Overweight";
+    else cout << "Obese";
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
