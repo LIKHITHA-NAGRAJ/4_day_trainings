@@ -1,0 +1,97 @@
+1
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    double subtotal = 0;
+
+    for (int i = 0; i < n; i++) {
+        string category;
+        double price;
+        cin >> category >> price;
+
+        double discount = 0;
+        if (category == "Electronics") discount = 0.10;
+        else if (category == "Books") discount = 0.20;
+        else if (category == "Clothing") discount = 0.15;
+        
+        subtotal += price * (1 - discount);
+    }
+
+    if (subtotal > 10000) {
+        subtotal *= 0.95; // Additional 5% cart-level discount
+    }
+
+    cout << fixed << setprecision(2) << "FINAL BILL: " << subtotal << endl;
+    return 0;
+}
+
+
+2
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int taskCount, clusterCount;
+    cin >> taskCount >> clusterCount;
+
+    vector<int> tasks(taskCount);
+    vector<int> clusters(clusterCount, 0); // Stores total load of each cluster
+
+    for (int i = 0; i < taskCount; i++) cin >> tasks[i];
+
+    for (int i = 0; i < taskCount; i++) {
+        // Find cluster with minimum load
+        int minIdx = 0;
+        for (int j = 1; j < clusterCount; j++) {
+            if (clusters[j] < clusters[minIdx]) minIdx = j;
+        }
+        clusters[minIdx] += tasks[i];
+    }
+
+    for (int i = 0; i < clusterCount; i++) {
+        cout << "Cluster " << i + 1 << " Load: " << clusters[i] << endl;
+    }
+
+    return 0;
+}
+
+3
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    map<string, double> revenueMap;
+    double totalRevenue = 0;
+
+    for (int i = 0; i < n; i++) {
+        string tier;
+        double amount;
+        cin >> tier >> amount;
+        revenueMap[tier] += amount;
+        totalRevenue += amount;
+    }
+
+    cout << "--- Revenue Summary ---" << endl;
+    for (auto const& [tier, rev] : revenueMap) {
+        cout << tier << ": Rs " << rev << endl;
+    }
+    cout << "Total Revenue: Rs " << totalRevenue << endl;
+    cout << "Average per Tier: Rs " << (totalRevenue / revenueMap.size()) << endl;
+
+    return 0;
+}
