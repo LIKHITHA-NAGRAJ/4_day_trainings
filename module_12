@@ -1,0 +1,163 @@
+1
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    map<string, int> activity;
+    string id;
+    for(int i=0; i<n; i++) {
+        cin >> id;
+        activity[id]++;
+    }
+    string top; int mx = 0;
+    for(auto const& [name, count] : activity) {
+        if(count > mx) { mx = count; top = name; }
+    }
+    cout << "TOP REVIEWER: " << top << " (" << mx << " REVIEWS)";
+    return 0;
+}
+
+2
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    float temp, low, high;
+    cin >> temp >> low >> high;
+    if (temp < low) cout << "HEATER ON";
+    else if (temp > high) cout << "AC ON";
+    else cout << "IDLE";
+    return 0;
+}
+
+3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, bookings; cin >> n >> bookings;
+    vector<int> seats(n + 1, 0);
+    for(int i=0; i<bookings; i++) {
+        int first, last, val; cin >> first >> last >> val;
+        for(int j=first; j<=last; j++) seats[j-1] += val;
+    }
+    for(int i=0; i<n; i++) cout << seats[i] << " ";
+    return 0;
+}
+
+4
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    map<string, int> sales;
+    for(int i=0; i<n; i++) {
+        string item; int qty; cin >> item >> qty;
+        sales[item] += qty;
+    }
+    vector<pair<int, string>> rank;
+    for(auto const& [item, qty] : sales) rank.push_back({qty, item});
+    sort(rank.rbegin(), rank.rend());
+    for(auto const& p : rank) cout << p.second << ": " << p.first << endl;
+    return 0;
+}
+
+5
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    for(int i=0; i<n; i++) cin >> a[i];
+    int l = 0, r = 0, zeros = 0, ans = 0;
+    while(r < n) {
+        if(a[r] == 0) zeros++;
+        while(zeros > k) {
+            if(a[l] == 0) zeros--;
+            l++;
+        }
+        ans = max(ans, r - l + 1);
+        r++;
+    }
+    cout << ans; return 0;
+}
+
+c1 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int i=0; i<n; i++) cin >> a[i];
+    sort(a.begin(), a.end());
+    int sum = 0;
+    for(int i=0; i<n; i+=2) sum += a[i];
+    cout << sum; return 0;
+}
+
+c2 
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    string s, p; cin >> s >> p;
+    if(s.size() < p.size()) { cout << "NONE"; return 0; }
+    vector<int> pFreq(26, 0), sFreq(26, 0), res;
+    for(char c : p) pFreq[c-'a']++;
+    for(int i=0; i<s.size(); i++) {
+        sFreq[s[i]-'a']++;
+        if(i >= p.size()) sFreq[s[i-p.size()]-'a']--;
+        if(pFreq == sFreq) res.push_back(i - p.size() + 1);
+    }
+    if(res.empty()) cout << "NONE";
+    else for(int x : res) cout << x << " ";
+    return 0;
+}
+
+c3
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    for(int i=0; i<n; i++) {
+        vector<int> row(n);
+        for(int j=0; j<n; j++) cin >> row[j];
+        reverse(row.begin(), row.end());
+        for(int x : row) cout << (x ^ 1) << " ";
+        cout << endl;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
