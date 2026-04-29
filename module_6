@@ -1,0 +1,204 @@
+1
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target;
+    cin >> n >> target;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int left = 0, right = n - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) {
+            cout << left + 1 << " " << right + 1; // 1-indexed
+            return 0;
+        }
+        if (sum < target) left++;
+        else right--;
+    }
+    return 0;
+}
+
+
+2
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+    int left = 0, right = s.length() - 1;
+    while (left < right) {
+        swap(s[left++], s[right--]);
+    }
+    cout << s;
+    return 0;
+}
+
+
+
+3
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> height(n);
+    for(int i = 0; i < n; i++) cin >> height[i];
+
+    int left = 0, right = n - 1, maxArea = 0;
+    while (left < right) {
+        int h = min(height[left], height[right]);
+        maxArea = max(maxArea, h * (right - left));
+        if (height[left] < height[right]) left++;
+        else right--;
+    }
+    cout << maxArea;
+    return 0;
+}
+
+4
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+    int left = 0, right = s.length() - 1;
+    bool valid = true;
+
+    while (left < right) {
+        if (!isalnum(s[left])) left++;
+        else if (!isalnum(s[right])) right--;
+        else {
+            if (tolower(s[left++]) != tolower(s[right--])) {
+                valid = false;
+                break;
+            }
+        }
+    }
+    cout << (valid ? "true" : "false");
+    return 0;
+}
+
+
+
+
+5
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int slow = 0;
+    for (int fast = 0; fast < n; fast++) {
+        if (nums[fast] != 0) {
+            swap(nums[slow++], nums[fast]);
+        }
+    }
+    for (int x : nums) cout << x << " ";
+    return 0;
+}
+
+
+
+
+ch 1
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    if (n == 0) return 0;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int i = 0;
+    for (int j = 1; j < n; j++) {
+        if (nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    cout << i + 1; // Number of unique elements
+    return 0;
+}
+
+
+ch 2
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector<int> nums(n), res(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+
+    int left = 0, right = n - 1, p = n - 1;
+    while (left <= right) {
+        if (abs(nums[left]) > abs(nums[right])) {
+            res[p--] = nums[left] * nums[left];
+            left++;
+        } else {
+            res[p--] = nums[right] * nums[right];
+            right--;
+        }
+    }
+    for (int x : res) cout << x << " ";
+    return 0;
+}
+
+
+
+ch 3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int m, n;
+    cin >> m >> n; // m is count in nums1, n is count in nums2
+    vector<int> nums1(m + n), nums2(n);
+    for(int i = 0; i < m; i++) cin >> nums1[i];
+    for(int i = 0; i < n; i++) cin >> nums2[i];
+
+    int i = m - 1, j = n - 1, k = m + n - 1;
+    while (j >= 0) {
+        if (i >= 0 && nums1[i] > nums2[j]) {
+            nums1[k--] = nums1[i--];
+        } else {
+            nums1[k--] = nums2[j--];
+        }
+    }
+    for (int x : nums1) cout << x << " ";
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
