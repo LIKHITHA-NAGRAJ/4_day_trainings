@@ -1,0 +1,314 @@
+1
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    vector<string> textStack;
+    string command, word;
+
+    while (cin >> command && command != "EXIT") {
+        if (command == "TYPE") {
+            cin >> word;
+            textStack.push_back(word);
+        } else if (command == "UNDO") {
+            if (!textStack.empty()) textStack.pop_back();
+        } else if (command == "SHOW") {
+            if (textStack.empty()) cout << "EMPTY" << endl;
+            else cout << textStack.back() << endl;
+        }
+    }
+    return 0;
+}
+
+2
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    vector<string> backStack, forwardStack;
+    string curr = "homepage";
+    string cmd, url;
+
+    while (cin >> cmd && cmd != "EXIT") {
+        if (cmd == "VISIT") {
+            cin >> url;
+            backStack.push_back(curr);
+            curr = url;
+            forwardStack.clear();
+        } else if (cmd == "BACK") {
+            if (!backStack.empty()) {
+                forwardStack.push_back(curr);
+                curr = backStack.back();
+                backStack.pop_back();
+            }
+        } else if (cmd == "FORWARD") {
+            if (!forwardStack.empty()) {
+                backStack.push_back(curr);
+                curr = forwardStack.back();
+                forwardStack.pop_back();
+            }
+        }
+        cout << "Current: " << curr << endl;
+    }
+    return 0;
+}
+
+
+
+
+3
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, id;
+    cin >> n;
+    unordered_set<int> uniqueIDs;
+    vector<int> result;
+
+    for (int i = 0; i < n; i++) {
+        cin >> id;
+        if (uniqueIDs.find(id) == uniqueIDs.end()) {
+            uniqueIDs.insert(id);
+            result.push_back(id);
+        }
+    }
+
+    for (int val : result) cout << val << " ";
+    return 0;
+}
+
+
+4
+#include <iostream>
+#include <queue>
+#include <string>
+using namespace std;
+
+int main() {
+    queue<string> patientQueue;
+    string cmd, name;
+
+    while (cin >> cmd && cmd != "EXIT") {
+        if (cmd == "ARRIVE") {
+            cin >> name;
+            patientQueue.push(name);
+        } else if (cmd == "NEXT") {
+            if (!patientQueue.empty()) {
+                cout << "Treating: " << patientQueue.front() << endl;
+                patientQueue.pop_back();
+            } else cout << "No patients" << endl;
+        }
+    }
+    return 0;
+}
+
+
+5
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+bool isBalanced(string s) {
+    vector<char> st;
+    for (char c : s) {
+        if (c == '(' || c == '{' || c == '[') st.push_back(c);
+        else {
+            if (st.empty()) return false;
+            if ((c == ')' && st.back() == '(') || 
+                (c == '}' && st.back() == '{') || 
+                (c == ']' && st.back() == '[')) st.pop_back();
+            else return false;
+        }
+    }
+    return st.empty();
+}
+
+int main() {
+    string s; cin >> s;
+    cout << (isBalanced(s) ? "BALANCED" : "NOT BALANCED");
+    return 0;
+}
+
+
+ch 1
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s, res = "";
+    cin >> s;
+    for (char c : s) {
+        if (!res.empty() && abs(res.back() - c) == 32) res.pop_back();
+        else res.push_back(c);
+    }
+    cout << res;
+    return 0;
+}
+
+
+
+
+
+ch 2
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s; cin >> s;
+    int curr = 0, maxD = 0;
+    for (char c : s) {
+        if (c == '(') {
+            curr++;
+            maxD = max(maxD, curr);
+        } else if (c == ')') curr--;
+    }
+    cout << maxD;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+ch 3
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    string s; cin >> s;
+    vector<int> freq(26, 0);
+    for (char c : s) freq[c - 'a']++;
+    for (int i = 0; i < s.length(); i++) {
+        if (freq[s[i] - 'a'] == 1) {
+            cout << i;
+            return 0;
+        }
+    }
+    cout << -1;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
